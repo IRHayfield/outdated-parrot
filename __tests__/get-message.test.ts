@@ -1,23 +1,7 @@
 import { getMessage } from '../src/parrot'
 import { PullRequestCommentGroup } from '../src/interfaces'
 
-// Mock context and other dependencies
-const context = {
-  issue: {
-    number: 123
-  },
-  runId: '456',
-  serverUrl: 'https://github.com/',
-  repo: {
-    owner: 'your',
-    repo: 'repo'
-  }
-}
-
-jest.mock('@actions/github', () => ({
-  context
-}))
-
+// Mock get boolean input
 jest.mock('@actions/core', () => ({
   getBooleanInput: (inputName: string) => {
     const inputs: { [key: string]: boolean } = {
@@ -27,8 +11,22 @@ jest.mock('@actions/core', () => ({
       'add-regenerate': true
     }
     return inputs[inputName]
-  },
-  sha256: async (path: string) => `${path}-mockedSha256Hash`
+  }
+}))
+
+// Mock github context
+jest.mock('@actions/github', () => ({
+  context: {
+    issue: {
+      number: 123
+    },
+    runId: '456',
+    serverUrl: 'https://github.com',
+    repo: {
+      owner: 'your',
+      repo: 'repo'
+    }
+  }
 }))
 
 describe('getMessage', () => {
@@ -82,7 +80,7 @@ describe('getMessage', () => {
       '@author2: This is the second comment.\n' +
         '---\n' +
         'commit - abc123' +
-        'diff - https://github.com/your/repo/pull/123/files/abc123..HEAD#diff-mockedSha256HashL42\n' +
+        'diff - https://github.com/your/repo/pull/123/files/abc123..HEAD#diff-2c651867cb4c3d87273402eb651092abb375910ba05878259bffd1cec9df9209L42\n' +
         'disscussion - https://github.com/your/repo/pull/123#discussion_r456\n' +
         'regenerate - https://github.com/your/repo/actions/runs/456'
     )

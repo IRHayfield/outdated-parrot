@@ -29,7 +29,7 @@ export async function getLatestLine(
   debug(`git rev-list stdout:\n${revListOutput.stdout}`)
   debug(`git rev-list stderr:\n${revListOutput.stderr}`)
 
-  const revsToIgnore = revListOutput.split('\n').filter(String)
+  const revsToIgnore = revListOutput.stdout.split('\n').filter(String)
 
   // Generate a string of --ignore-rev options from revsToIgnore
   let ignoreRevOptions = ''

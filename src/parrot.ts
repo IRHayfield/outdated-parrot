@@ -1,18 +1,10 @@
 import { notice, getBooleanInput } from '@actions/core'
 import { context } from '@actions/github'
-import { Octokit } from '@octokit/action'
 
 import { getLatestLine } from './latest-line'
+import { getCommentGroups } from './query'
 import { sha256 } from './hash'
-import {
-  PullRequestComments,
-  PullRequestCommentGroup,
-  Comment
-} from './interfaces'
-
-const octokit = new Octokit()
-
-const repoUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}`
+import { PullRequestCommentGroup, Comment } from './interfaces'
 
 export async function addParrot(
   commentGroup: PullRequestCommentGroup
@@ -47,6 +39,8 @@ export async function getMessage(
   commentGroup: PullRequestCommentGroup,
   originalComment: Comment
 ): Promise<[string, string]> {
+  const repoUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}`
+
   let title = ''
   let message = ''
 
@@ -104,6 +98,8 @@ export async function addRegenerateParrotsLink(
   file: string,
   startLine: number
 ): Promise<void> {
+  const repoUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}`
+
   const title = 'To regenerate annotations please rerun this build'
 
   const message = `${repoUrl}/actions/runs/${context.runId}`
@@ -145,51 +141,4 @@ export async function parrotOutdatedOpenComments(
   }
 
   return atleastOneParrotExists
-}
-
-export async function getCommentGroups(
-  owner: string,
-  repo: string,
-  pullRequest: number
-): Promise<PullRequestCommentGroup[]> {
-  const query = `query pullRequests($owner: String!, $repo: String!, $pullRequest: Int!) {
-        repository(owner: $owner, name: $repo) {
-            pullRequest(number: $pullRequest) {
-                reviewThreads(first: 100) {
-                    edges {
-                        node {
-                            isResolved
-                            isOutdated
-                            comments(first: 100) {
-                                totalCount
-                                nodes {
-                                    author {
-                                        login
-                                        name
-                                    }
-                                    body
-                                    originalLine
-                                    path
-                                    originalCommit {
-                                        abbreviatedOid
-                                        oid
-                                    }
-                                    url
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }`
-
-  const pullRequests: PullRequestComments = await octokit.graphql({
-    query,
-    owner,
-    repo,
-    pullRequest
-  })
-
-  return pullRequests.repository.pullRequest.reviewThreads.edges
 }
