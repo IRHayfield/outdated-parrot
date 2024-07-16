@@ -1,23 +1,34 @@
-name: 'The name of your action here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'outdated-parrot'
+description: 'Action to parrot "outdated" pull request comments back onto the files changed view as annotations'
+author: 'IRHayfield'
 
 # Add your action's branding here. This will appear on the GitHub Marketplace.
 branding:
-  icon: 'heart'
-  color: 'red'
+  icon: 'twitter'
+  color: 'green'
 
 # Define your inputs here.
 inputs:
-  milliseconds:
-    description: 'Your input description here'
-    required: true
-    default: '1000'
-
-# Define your outputs here.
-outputs:
-  time:
-    description: 'Your output description here'
+  add-hash:
+    description: 'Add the hash of the git commit which the comment was made against to the comment annotation'
+    required: false
+    default: false
+  add-diff:
+    description: 'Add diff link to the comment annotation'
+    required: false
+    default: true
+  add-discussion:
+    description: 'Add discussion link to the comment annotation'
+    required: false
+    default: true
+  add-regenerate:
+    description: 'Add regenerate link to the comment annotation'
+    required: false
+    default: false
+  add-stand-alone-regenerate:
+    description: 'Add stand-alone regenerate link annotation that can be used to regenerate all annotations'
+    required: false
+    default: false
 
 runs:
   using: node20

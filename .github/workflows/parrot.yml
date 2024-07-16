@@ -1,0 +1,23 @@
+name: Outdated Parrot
+
+on:
+  pull_request:
+    types:
+      - synchronize
+
+jobs:
+  parrot:
+    name: Parrot outdated comments
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout code for git blame
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run parrot action
+        uses: ./
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
