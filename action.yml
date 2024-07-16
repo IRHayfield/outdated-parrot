@@ -1,5 +1,7 @@
 name: 'outdated-parrot'
-description: 'Action to parrot "outdated" pull request comments back onto the files changed view as annotations'
+description:
+  'Action to parrot "outdated" pull request comments back onto the files changed
+  view as annotations'
 author: 'IRHayfield'
 
 # Add your action's branding here. This will appear on the GitHub Marketplace.
@@ -10,7 +12,9 @@ branding:
 # Define your inputs here.
 inputs:
   add-hash:
-    description: 'Add the hash of the git commit which the comment was made against to the comment annotation'
+    description:
+      'Add the hash of the git commit which the comment was made against to the
+      comment annotation'
     required: false
     default: false
   add-diff:
@@ -26,7 +30,9 @@ inputs:
     required: false
     default: false
   add-stand-alone-regenerate:
-    description: 'Add stand-alone regenerate link annotation that can be used to regenerate all annotations'
+    description:
+      'Add stand-alone regenerate link annotation that can be used to regenerate
+      all annotations'
     required: false
     default: false
 
