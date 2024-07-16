@@ -87,7 +87,7 @@ describe('addParrot', () => {
 
     expect(stdoutSpy).toHaveBeenCalled()
     expect(stdoutSpy).toHaveBeenCalledWith(
-      `::notice title=author1%3A This is the first comment.,file=file/path,line=42::@author2: This is the second comment.%0A---%0Acommit - abc123diff - https://github.com/your/repo/pull/123/files/abc123..HEAD#diff-2c651867cb4c3d87273402eb651092abb375910ba05878259bffd1cec9df9209L42%0Adisscussion - https://github.com/your/repo/pull/123#discussion_r456%0Aregenerate - https://github.com/your/repo/actions/runs/456${EOL}`
+      `::notice title=author1%3A This is the first comment.,file=file/path,line=42::@author2: This is the second comment.%0A---%0Acommit - abc123%0Adiff - https://github.com/your/repo/pull/123/files/abc123..HEAD#diff-2c651867cb4c3d87273402eb651092abb375910ba05878259bffd1cec9df9209L42%0Adisscussion - https://github.com/your/repo/pull/123#discussion_r456%0Aregenerate - https://github.com/your/repo/actions/runs/456${EOL}`
     )
   })
 })
