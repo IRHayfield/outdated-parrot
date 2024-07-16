@@ -46,13 +46,12 @@ export async function getMessage(
 
   // Populate title and message with all the comments in the thread
   for (const comment of commentGroup.node.comments.nodes) {
-    const authorName: string = comment.author.name
     const authorLogin: string = comment.author.login
     const body: string = comment.body
 
     // First comment is added as the annotation title to save space
     if (!title) {
-      title = `${authorName}: ${body}`
+      title = `${authorLogin}: ${body}`
     } else {
       // Use @ author login as rollover infomation is available in annotation body
       message += `@${authorLogin}: ${body}\n`
@@ -65,7 +64,7 @@ export async function getMessage(
   }
 
   if (getBooleanInput('add-hash')) {
-    message += `commit - ${originalComment.originalCommit.abbreviatedOid}`
+    message += `commit - ${originalComment.originalCommit.abbreviatedOid}\n`
   }
 
   if (getBooleanInput('add-diff')) {

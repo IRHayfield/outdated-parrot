@@ -56850,12 +56850,11 @@ async function getMessage(commentGroup, originalComment) {
     let message = '';
     // Populate title and message with all the comments in the thread
     for (const comment of commentGroup.node.comments.nodes) {
-        const authorName = comment.author.name;
         const authorLogin = comment.author.login;
         const body = comment.body;
         // First comment is added as the annotation title to save space
         if (!title) {
-            title = `${authorName}: ${body}`;
+            title = `${authorLogin}: ${body}`;
         }
         else {
             // Use @ author login as rollover infomation is available in annotation body
@@ -56867,7 +56866,7 @@ async function getMessage(commentGroup, originalComment) {
         message += `---\n`;
     }
     if ((0, core_1.getBooleanInput)('add-hash')) {
-        message += `commit - ${originalComment.originalCommit.abbreviatedOid}`;
+        message += `commit - ${originalComment.originalCommit.abbreviatedOid}\n`;
     }
     if ((0, core_1.getBooleanInput)('add-diff')) {
         const pullRequestUrl = `${repoUrl}/pull/${github_1.context.issue.number}`;
@@ -56935,6 +56934,9 @@ exports.getCommentGroups = getCommentGroups;
 const action_1 = __nccwpck_require__(1231);
 async function getCommentGroups(owner, repo, pullRequest) {
     const octokit = new action_1.Octokit();
+    // pullRequest docs https://docs.github.com/en/graphql/reference/objects#pullrequest
+    // reviewThreads docs https://docs.github.com/en/graphql/reference/objects#pullrequestreviewthread
+    // comments docs https://docs.github.com/en/graphql/reference/objects#pullrequestreviewcomment
     const query = `query pullRequests($owner: String!, $repo: String!, $pullRequest: Int!) {
           repository(owner: $owner, name: $repo) {
               pullRequest(number: $pullRequest) {
@@ -56948,7 +56950,6 @@ async function getCommentGroups(owner, repo, pullRequest) {
                                   nodes {
                                       author {
                                           login
-                                          name
                                       }
                                       body
                                       originalLine

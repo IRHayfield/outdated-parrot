@@ -22,7 +22,6 @@ export interface PullRequestCommentGroup {
 export interface Comment {
   author: {
     login: string
-    name: string
   }
   body: string
   originalLine: number

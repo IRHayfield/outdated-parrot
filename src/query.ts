@@ -9,6 +9,9 @@ export async function getCommentGroups(
 ): Promise<PullRequestCommentGroup[]> {
   const octokit = new Octokit()
 
+  // pullRequest docs https://docs.github.com/en/graphql/reference/objects#pullrequest
+  // reviewThreads docs https://docs.github.com/en/graphql/reference/objects#pullrequestreviewthread
+  // comments docs https://docs.github.com/en/graphql/reference/objects#pullrequestreviewcomment
   const query = `query pullRequests($owner: String!, $repo: String!, $pullRequest: Int!) {
           repository(owner: $owner, name: $repo) {
               pullRequest(number: $pullRequest) {
@@ -22,7 +25,6 @@ export async function getCommentGroups(
                                   nodes {
                                       author {
                                           login
-                                          name
                                       }
                                       body
                                       originalLine

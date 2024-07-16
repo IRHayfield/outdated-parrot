@@ -40,7 +40,6 @@ describe('getMessage', () => {
           nodes: [
             {
               author: {
-                name: 'Author1',
                 login: 'author1'
               },
               body: 'This is the first comment.',
@@ -54,7 +53,6 @@ describe('getMessage', () => {
             },
             {
               author: {
-                name: 'Author2',
                 login: 'author2'
               },
               body: 'This is the second comment.',
@@ -75,7 +73,7 @@ describe('getMessage', () => {
 
     const [title, message] = await getMessage(commentGroup, originalComment)
 
-    expect(title).toBe('Author1: This is the first comment.')
+    expect(title).toBe('author1: This is the first comment.')
     expect(message).toBe(
       '@author2: This is the second comment.\n' +
         '---\n' +
