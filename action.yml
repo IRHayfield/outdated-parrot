@@ -35,6 +35,11 @@ inputs:
       all annotations'
     required: false
     default: false
+  get-latest-line:
+    description:
+      'Find current line location using git blame'
+    required: false
+    default: true
 
 runs:
   using: node20
