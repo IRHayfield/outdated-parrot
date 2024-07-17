@@ -16,14 +16,14 @@ Test line 4
 Test line 5`
 
 describe('getLatestLine', () => {
-  let stdoutWriteSpy: jest.SpyInstance
+  // let stdoutWriteSpy: jest.SpyInstance
   let originalCommitHash: string
 
   beforeEach(async () => {
     // Mock process.stdout.write
-    stdoutWriteSpy = jest
-      .spyOn(process.stdout, 'write')
-      .mockImplementation(() => true)
+    //stdoutWriteSpy = jest
+    //  .spyOn(process.stdout, 'write')
+    //  .mockImplementation(() => true)
 
     // Create a temporary test directory
     mkdirSync(testDir)
@@ -48,7 +48,7 @@ describe('getLatestLine', () => {
 
   afterEach(() => {
     // Restore process.stdout.write mock
-    stdoutWriteSpy.mockRestore()
+    //stdoutWriteSpy.mockRestore()
 
     // Return to base dir
     process.chdir(baseDir)
