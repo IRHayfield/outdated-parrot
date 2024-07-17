@@ -16,15 +16,17 @@ Test line 4
 Test line 5`
 
 describe('getLatestLine', () => {
-  // let stdoutWriteSpy: jest.SpyInstance
+  let stdoutWriteSpy: jest.SpyInstance
   let originalCommitHash: string
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     // Mock process.stdout.write
-    //stdoutWriteSpy = jest
-    //  .spyOn(process.stdout, 'write')
-    //  .mockImplementation(() => true)
+    stdoutWriteSpy = jest
+      .spyOn(process.stdout, 'write')
+      .mockImplementation(() => true)
+  })
 
+  beforeEach(async () => {
     // Create a temporary test directory
     mkdirSync(testDir)
 
@@ -33,6 +35,8 @@ describe('getLatestLine', () => {
 
     // Navigate into repo so getLatestLine git commands run in the correct repo
     process.chdir(repoPath)
+    await exec(`git config user.name "Outdated Parrot"`)
+    await exec(`git config user.email "test@outdated.parrot"`)
 
     // Create test file
     writeFileSync(join(repoPath, testFileName), originalFileContent)
@@ -48,7 +52,7 @@ describe('getLatestLine', () => {
 
   afterEach(() => {
     // Restore process.stdout.write mock
-    //stdoutWriteSpy.mockRestore()
+    stdoutWriteSpy.mockRestore()
 
     // Return to base dir
     process.chdir(baseDir)

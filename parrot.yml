@@ -6,6 +6,7 @@ on:
       - synchronize
 
 permissions:
+  contents: read
   issues: read
 
 jobs:
