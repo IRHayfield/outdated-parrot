@@ -6,7 +6,7 @@ author: 'IRHayfield'
 
 # Add your action's branding here. This will appear on the GitHub Marketplace.
 branding:
-  icon: 'twitter'
+  icon: 'feather'
   color: 'green'
 
 # Define your inputs here.

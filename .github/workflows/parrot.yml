@@ -5,6 +5,9 @@ on:
     types:
       - synchronize
 
+permissions:
+  issues: read
+
 jobs:
   parrot:
     name: Parrot outdated comments
