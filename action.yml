@@ -29,15 +29,14 @@ inputs:
     description: 'Add regenerate link to the comment annotation'
     required: false
     default: false
-  add-stand-alone-regenerate:
+  add-standalone-regenerate:
     description:
       'Add stand-alone regenerate link annotation that can be used to regenerate
       all annotations'
     required: false
-    default: false
+    default: true
   get-latest-line:
-    description:
-      'Find current line location using git blame'
+    description: 'Find current line location using git blame'
     required: false
     default: true
 
