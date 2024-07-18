@@ -1,9 +1,15 @@
-![](./images/gentlemanparrot.gif)
-
 # Outdated Parrot
+
+[![GitHub Super-Linter](https://github.com/actions/typescript-action/actions/workflows/linter.yml/badge.svg)](https://github.com/super-linter/super-linter?query=branch%3Amain)
+[![CI](https://github.com/actions/typescript-action/actions/workflows/ci.yml/badge.svg)](https://github.com/IRHayfield/outdated-parrot/actions/workflows/ci.yml?query=branch%3Amain)
+[![Check dist/](https://github.com/actions/typescript-action/actions/workflows/check-dist.yml/badge.svg)](https://github.com/actions/typescript-action/actions/workflows/check-dist.yml?query=branch%3Amain)
+[![CodeQL](https://github.com/actions/typescript-action/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/actions/typescript-action/actions/workflows/codeql-analysis.yml?query=branch%3Amain)
+[![Coverage](./badges/coverage.svg)](./badges/coverage.svg)
 
 GitHub Action to add all open outdated comment threads to a pull requests files
 changed view as annotations.
+
+[![gentleman parrot](./images/gentlemanparrot.gif)](https://cultofthepartyparrot.com/)
 
 ## Setup guide
 
