@@ -1,16 +1,16 @@
 {
-  "name": "typescript-action",
-  "description": "GitHub Actions TypeScript template",
+  "name": "outdated-parrot",
+  "description": "GitHub Action to add all open outdated comment threads to a pull requests files changed view as annotations.",
   "version": "0.0.0",
   "author": "",
   "private": true,
-  "homepage": "https://github.com/actions/typescript-action",
+  "homepage": "https://github.com/IRHayfield/outdated-parrot",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/typescript-action.git"
+    "url": "git+https://github.com/IRHayfield/outdated-parrot.git"
   },
   "bugs": {
-    "url": "https://github.com/actions/typescript-action/issues"
+    "url": "https://github.com/IRHayfield/outdated-parrot/issues"
   },
   "keywords": [
     "actions",
