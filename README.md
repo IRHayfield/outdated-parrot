@@ -6,10 +6,16 @@
 [![CodeQL](https://github.com/actions/typescript-action/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/IRHayfield/outdated-parrot/actions/workflows/codeql-analysis.yml?query=branch%3Amain)
 ![Coverage](./badges/coverage.svg)
 
+
+
 GitHub Action to add all open outdated comment threads to a pull requests files
 changed view as annotations.
 
 [![gentleman parrot](./images/gentlemanparrot.gif)](https://cultofthepartyparrot.com/)
+
+## Example
+
+[![example](./images/example.PNG)](https://github.com/IRHayfield/outdated-parrot/pull/12/files)
 
 ## Setup guide
 
