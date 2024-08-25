@@ -9,9 +9,9 @@
 GitHub Action to add all open outdated comment threads to a pull requests files
 changed view as annotations.
 
-[![gentleman parrot](./images/gentlemanparrot.gif)](https://cultofthepartyparrot.com/)
+[![gentleman parrot](./images/gentlemanparrot.gif)](https://cultofthepartyparrot.com/) Add an example here!
 
-## Setup guide
+## Setup guide!
 
 Copy the [parrot.yml](./parrot.yml) file in the root of this repository into
 your repositories '.github/workflows' directory.
